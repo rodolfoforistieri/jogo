@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maximize seu ganho — online</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#131A22; --surface:#1B242F; --surface2:#18212B; --line:#2F3D4C;
+    --txt:#E8EDF1; --muted:#8B9BAA; --d:#E0553C; --c:#3FB0A0; --gold:#E5B44B;
+    --display:"Space Grotesk",system-ui,sans-serif;
+    --body:"IBM Plex Sans",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--txt);font-family:var(--body);font-size:16px;
+    line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:640px;margin:0 auto;padding:24px 16px 70px}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  h1{font-family:var(--display);font-weight:700;font-size:clamp(26px,6vw,36px);line-height:1.05;
+    margin:8px 0 6px;letter-spacing:-.02em}
+  .sub{color:var(--muted);font-size:14px;margin:0 0 22px}
+  .card{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:16px;margin-bottom:12px}
+  .card h2{font-family:var(--display);font-size:16px;font-weight:500;margin:0 0 12px}
+  label{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  input{width:100%;font-family:var(--body);font-size:16px;padding:11px 12px;border-radius:8px;
+    border:1px solid var(--line);background:var(--surface2);color:var(--txt);margin-bottom:12px}
+  input:focus{outline:2px solid var(--gold);outline-offset:1px}
+  input.cod{font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em}
+  button{font-family:var(--body);font-size:15px;padding:12px 16px;border-radius:8px;
+    border:1px solid var(--line);background:#222D3A;color:var(--txt);cursor:pointer;transition:border-color .15s}
+  button:hover{border-color:#4A5D70}
+  button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  button.full{width:100%}
+  button.ghost{background:transparent}
+  .linhaBtn{display:flex;gap:10px;flex-wrap:wrap}
+
+  .codigo{font-family:var(--mono);font-weight:600;font-size:34px;letter-spacing:.14em;
+    color:var(--gold);text-align:center;padding:14px;border:1px dashed rgba(229,180,75,.4);
+    border-radius:10px;margin-bottom:14px}
+  .lista{display:grid;gap:6px;margin-bottom:14px}
+  .item{display:flex;gap:10px;align-items:center;padding:8px 11px;background:var(--surface2);
+    border:1px solid var(--line);border-radius:7px;font-size:14.5px}
+  .item .tag{margin-left:auto;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+  .vazio{color:var(--muted);font-size:14px;text-align:center;padding:14px 0}
+
+  .topo{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+  .rot{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .total{font-family:var(--mono);font-weight:600;font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+  .total.pos{color:var(--c)} .total.neg{color:var(--d)}
+  .parceiro{margin-left:auto;font-size:13.5px;color:var(--muted)}
+  .parceiro b{color:var(--txt);font-weight:500}
+
+  .rodada{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:18px 16px}
+  .rodada.bonus{border-color:rgba(229,180,75,.45)}
+  .cabR{display:flex;align-items:center;gap:9px;margin-bottom:14px}
+  .num{font-family:var(--display);font-weight:700;font-size:19px}
+  .chip{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--gold);
+    border:1px solid rgba(229,180,75,.4);border-radius:99px;padding:1px 8px}
+  .aviso{border-left:2px solid var(--gold);padding:2px 0 2px 12px;margin-bottom:15px;font-size:14.5px;color:#D8DEE4}
+  .escolhas{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  button.esc{font-family:var(--display);font-weight:700;font-size:16px;padding:15px 8px;background:var(--surface2);line-height:1.25}
+  button.esc small{display:block;font-family:var(--body);font-weight:400;font-size:12px;color:var(--muted);margin-top:3px}
+  button.esc[data-v="D"]:hover{border-color:var(--d)}
+  button.esc[data-v="C"]:hover{border-color:var(--c)}
+  .esperando{text-align:center;padding:18px 0;color:var(--muted);font-size:14.5px}
+  .esperando b{display:block;font-family:var(--display);font-weight:700;font-size:30px;margin-bottom:8px}
+  .esperando b.D{color:var(--d)} .esperando b.C{color:var(--c)}
+  .pulso{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);
+    margin-right:7px;animation:p 1.2s ease-in-out infinite}
+  @keyframes p{0%,100%{opacity:.25}50%{opacity:1}}
+  .revelacao{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+  .rev{border:1px solid var(--line);border-radius:8px;padding:12px 10px;text-align:center;background:var(--surface2)}
+  .rev .quem{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .rev .jog{font-family:var(--display);font-weight:700;font-size:30px;line-height:1}
+  .jog.D{color:var(--d)} .jog.C{color:var(--c)}
+  .saldo{text-align:center;font-family:var(--mono);font-weight:600;font-size:25px;margin-bottom:4px;font-variant-numeric:tabular-nums}
+  .saldo.pos{color:var(--c)} .saldo.neg{color:var(--d)}
+  .nota{text-align:center;font-size:13.5px;color:var(--muted);margin-bottom:14px}
+
+  .hist{margin-top:20px}
+  .hist .rot{display:block;margin-bottom:8px}
+  .lin{display:flex;align-items:center;gap:10px;padding:7px 10px;border-bottom:1px solid var(--line);
+    font-family:var(--mono);font-size:13px}
+  .lin:first-of-type{border-top:1px solid var(--line)}
+  .lin .n{color:var(--muted);min-width:22px}
+  .lin .b{color:var(--gold);font-size:11px}
+  .lin .p{margin-left:auto;font-weight:600;font-variant-numeric:tabular-nums}
+  .lin .p.pos{color:var(--c)} .lin .p.neg{color:var(--d)}
+  .lin .ac{color:var(--muted);min-width:44px;text-align:right}
+
+  .matriz{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line);
+    border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:18px}
+  .cel{background:var(--surface);padding:10px 7px;text-align:center}
+  .cel b{display:block;font-family:var(--mono);font-size:13.5px}
+  .cel span{display:block;font-size:11px;color:var(--muted);margin-top:2px}
+
+  .painel{display:grid;gap:8px}
+  .dupla{border:1px solid var(--line);border-radius:8px;background:var(--surface2);padding:11px 12px}
+  .dupla .nomes{display:flex;justify-content:space-between;font-size:14.5px;margin-bottom:5px}
+  .dupla .barra{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .dupla .pl{font-weight:600}
+  .dupla .pl.pos{color:var(--c)} .dupla .pl.neg{color:var(--d)}
+
+  .erro{border-left:3px solid var(--d);padding:10px 12px;background:rgba(224,85,60,.09);
+    border-radius:0 8px 8px 0;font-size:14px;margin-bottom:14px}
+  .passos{font-size:14.5px;color:#C9D4DD}
+  .passos ol{padding-left:20px;margin:0}
+  .passos li{margin-bottom:9px}
+  code{font-family:var(--mono);font-size:12.5px;background:var(--surface2);padding:1px 5px;
+    border-radius:4px;border:1px solid var(--line)}
+  pre{font-family:var(--mono);font-size:12px;background:var(--surface2);border:1px solid var(--line);
+    border-radius:8px;padding:12px;overflow-x:auto;line-height:1.5}
+  footer{margin-top:30px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:#6F808F;line-height:1.5}
+
+  .aguardo{text-align:center;padding:16px 0;color:var(--muted);font-size:14.5px}
+  .aguardo .pronto{color:var(--c);font-weight:500}
+  .subitem{font-size:13px;color:var(--muted);margin-top:4px}
+  .perigo{border-color:rgba(224,85,60,.5)!important;color:#F0A292}
+  .semPar{border-left:2px solid var(--gold);padding-left:12px;margin:12px 0;font-size:14px;color:#D8DEE4}
+  .voltar{font-size:13.5px;color:var(--muted);text-align:center;margin-top:14px}
+  .voltar a{color:var(--gold);cursor:pointer;text-decoration:underline}
+  .salaItem{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);
+    border-radius:8px;background:var(--surface2);margin-bottom:7px;cursor:pointer;width:100%;
+    font-family:var(--body);color:var(--txt);text-align:left;font-size:15px}
+  .salaItem:hover{border-color:#4A5D70}
+  .salaItem .cd{font-family:var(--mono);font-weight:600;letter-spacing:.1em;color:var(--gold)}
+  .salaItem .qd{margin-left:auto;font-size:12.5px;color:var(--muted)}
+  .resumo{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+  .box{background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:11px}
+  .box .v{font-family:var(--mono);font-weight:600;font-size:22px;font-variant-numeric:tabular-nums}
+  .box .l{font-size:12px;color:var(--muted);line-height:1.35;margin-top:2px}
+  .seq{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:6px;word-break:break-all}
+  .seq i{font-style:normal;color:var(--d)}
+  .seq u{text-decoration:none;color:var(--gold)}
+  @media (max-width:420px){.matriz{grid-template-columns:1fr}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">CNJ · exercício em dupla · 15 rodadas</div>
+  <h1>Maximize seu ganho</h1>
+  <p class="sub" id="sub">Cada dupla joga no próprio ritmo. A jogada trava quando você confirma.</p>
+  <div id="app"><div class="card"><div class="vazio"><span class="pulso"></span>Conectando…</div></div></div>
+  <footer>
+    Exercício do CNJ adaptado do modelo de Flood-Dresher (1950) e da dinâmica <em>Win as much as you can</em>, do Prof. Michael Wheeler (Harvard). Material do GT RAD / Faculdade de Direito da UnB. Pesquisador responsável: André Gomma de Azevedo.
+  </footer>
+</div>
+
+<!-- ════════ COLE SUAS CHAVES DO FIREBASE AQUI ════════ -->
+<script>
+  const FIREBASE_CONFIG = {
+    databaseURL: "https://jogo-4310c-default-rtdb.firebaseio.com/",
+    projectId: "jogo-4310c"
+  };
+</script>
+<!-- ═══════════════════════════════════════════════════ -->
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script>
+(function(){
+  const BONUS = {4:2, 8:3, 12:5, 15:10};
+  const app = document.getElementById("app");
+  const MATRIZ = `<div class="matriz">
+      <div class="cel"><b>2 D</b><span>cada um perde 1</span></div>
+      <div class="cel"><b>1 D · 1 C</b><span>D ganha 3 · C perde 3</span></div>
+      <div class="cel"><b>2 C</b><span>cada um ganha 1</span></div>
+    </div>`;
+
+  /* ---------- memória local ---------- */
+  const guardar = (k,v) => { try{ localStorage.setItem(k,v); }catch(e){} };
+  const ler = k => { try{ return localStorage.getItem(k); }catch(e){ return null; } };
+
+  let UID = ler("msg_uid");
+  if(!UID){ UID = "u" + Math.random().toString(36).slice(2,10); guardar("msg_uid", UID); }
+
+  /* ---------- estado ---------- */
+  let db = null, codigo = null, papel = null, dados = {}, ref = null, vistas = {}, tela = "jogo";
+
+  function salasSalvas(){
+    try{ return JSON.parse(ler("msg_salas") || "[]"); }catch(e){ return []; }
+  }
+  function registrarSala(cod){
+    const l = salasSalvas().filter(x => x.cod !== cod);
+    l.unshift({ cod, quando: Date.now() });
+    guardar("msg_salas", JSON.stringify(l.slice(0,12)));
+  }
+  const dataCurta = ms => new Date(ms).toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit"}) +
+    " " + new Date(ms).toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"});
+
+  const pontos = (eu, ele) => eu === "D" ? (ele === "D" ? -1 : 3) : (ele === "D" ? -3 : 1);
+  const esc = s => String(s||"").replace(/[<>&"]/g, c => ({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
+  // jogadas antigas eram texto puro; as novas guardam {v, t} pra auditoria
+  const valor = x => (x && typeof x === "object") ? x.v : x;
+
+  function configOk(){
+    return FIREBASE_CONFIG.databaseURL && !String(FIREBASE_CONFIG.databaseURL).includes("COLE_AQUI");
+  }
+
+  function telaConfig(){
+    document.getElementById("sub").textContent = "Falta ligar o banco de dados antes de usar.";
+    app.innerHTML = `<div class="card"><div class="erro">O endereço do Firebase não foi preenchido neste arquivo. Sem isso, os aparelhos não se enxergam.</div></div>`;
+  }
+
+  /* ---------- tela inicial ---------- */
+  function telaInicio(){
+    const salvaCod = ler("msg_sala"), salvaPapel = ler("msg_papel");
+    const retomar = salvaCod && salvaPapel
+      ? `<div class="card"><h2>Continuar de onde parou</h2>
+           <p class="subitem" style="margin:0 0 12px">Sala ${esc(salvaCod)} · você entrou como ${salvaPapel === "organizador" ? "organizador" : "jogador"}.</p>
+           <button class="full" id="retomar">Voltar para a sala ${esc(salvaCod)}</button></div>`
+      : "";
+
+    const minhas = salasSalvas();
+    const listaSalas = minhas.length ? `<div class="card"><h2>Suas salas</h2>
+        ${minhas.map(x => `<button class="salaItem" data-cod="${x.cod}">
+            <span class="cd">${x.cod}</span><span class="qd">${dataCurta(x.quando)}</span></button>`).join("")}
+        <p class="subitem">Abre o painel e os resultados de qualquer sala que você criou neste aparelho.</p>
+      </div>` : "";
+
+    app.innerHTML = retomar + listaSalas + MATRIZ + `
+      <div class="card">
+        <h2>Entrar numa sala</h2>
+        <label for="nome">Seu nome</label>
+        <input id="nome" maxlength="30" placeholder="Rodolfo" autocomplete="name">
+        <label for="cod">Código da sala</label>
+        <input id="cod" class="cod" maxlength="6" placeholder="ABCD12" autocomplete="off">
+        <button class="full" id="entrar">Entrar</button>
+      </div>
+      <div class="card">
+        <h2>Organizar a turma</h2>
+        <p class="subitem" style="margin:0 0 12px">Cria a sala, forma as duplas e acompanha todo mundo por um painel.</p>
+        <button class="full ghost" id="criar">Criar sala</button>
+        <div class="voltar">Já criou uma sala antes? <a id="reabrir">Reabrir o painel com o código</a></div>
+      </div>`;
+
+    app.querySelectorAll(".salaItem").forEach(b => b.addEventListener("click", () => {
+      codigo = b.dataset.cod; papel = "organizador"; tela = "jogo";
+      guardar("msg_sala", codigo); guardar("msg_papel", papel);
+      escutar();
+    }));
+
+    const bRet = document.getElementById("retomar");
+    if(bRet) bRet.addEventListener("click", () => {
+      codigo = salvaCod; papel = salvaPapel; escutar();
+    });
+
+    document.getElementById("criar").addEventListener("click", async () => {
+      codigo = Array.from({length:6}, () =>
+        "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"[Math.floor(Math.random()*32)]).join("");
+      papel = "organizador";
+      await db.ref("salas/" + codigo).set({ criada: Date.now(), fase: "espera", orgUid: UID });
+      guardar("msg_sala", codigo); guardar("msg_papel", papel); registrarSala(codigo);
+      escutar();
+    });
+
+    document.getElementById("reabrir").addEventListener("click", () => {
+      app.innerHTML = `<div class="card">
+        <h2>Reabrir o painel</h2>
+        <p class="subitem" style="margin:0 0 12px">O painel do organizador não guarda nada no aparelho. Com o código, você volta pra sala de qualquer navegador, sem atrapalhar quem está jogando.</p>
+        <label for="cod2">Código da sala</label>
+        <input id="cod2" class="cod" maxlength="6" placeholder="ABCD12" autocomplete="off">
+        <button class="full" id="ir">Abrir painel</button>
+        <div class="voltar"><a id="volta">voltar</a></div>
+      </div>`;
+      document.getElementById("volta").addEventListener("click", telaInicio);
+      document.getElementById("ir").addEventListener("click", async () => {
+        const cod = document.getElementById("cod2").value.trim().toUpperCase();
+        if(cod.length !== 6){ alerta("O código tem 6 letras."); return; }
+        const snap = await db.ref("salas/" + cod).get();
+        if(!snap.exists()){ alerta("Não achei nenhuma sala com esse código."); return; }
+        codigo = cod; papel = "organizador";
+        guardar("msg_sala", codigo); guardar("msg_papel", papel); registrarSala(codigo);
+        escutar();
+      });
+    });
+
+    document.getElementById("entrar").addEventListener("click", async () => {
+      const nome = document.getElementById("nome").value.trim();
+      const cod  = document.getElementById("cod").value.trim().toUpperCase();
+      if(!nome || cod.length !== 6){ alerta("Preencha o nome e o código de 6 letras."); return; }
+      const snap = await db.ref("salas/" + cod).get();
+      if(!snap.exists()){ alerta("Não achei nenhuma sala com esse código."); return; }
+      codigo = cod; papel = "jogador";
+      await db.ref(`salas/${cod}/jogadores/${UID}`).set({ nome, entrou: Date.now() });
+      guardar("msg_sala", codigo); guardar("msg_papel", papel);
+      escutar();
+    });
+  }
+
+  function alerta(msg){
+    const c = app.querySelector(".card");
+    if(!c) return;
+    let e = c.querySelector(".erro");
+    if(!e){ e = document.createElement("div"); e.className = "erro"; c.insertBefore(e, c.firstChild); }
+    e.textContent = msg;
+  }
+
+  function sair(){
+    if(ref){ ref.off(); ref = null; }
+    codigo = null; papel = null; dados = {}; vistas = {};
+    guardar("msg_sala", ""); guardar("msg_papel", "");
+    telaInicio();
+  }
+
+  /* ---------- escuta ---------- */
+  function escutar(){
+    if(ref) ref.off();
+    ref = db.ref("salas/" + codigo);
+    ref.on("value", snap => { dados = snap.val() || {}; render(); },
+      err => {
+        app.innerHTML = `<div class="card"><div class="erro">O banco recusou a conexão: ${esc(err.message)}<br><br>Quase sempre é a regra de escrita do Realtime Database.</div></div>`;
+      });
+  }
+
+  /* ---------- formação de duplas ---------- */
+  const semPar = () => {
+    const emDupla = new Set();
+    Object.values(dados.duplas || {}).forEach(d => { emDupla.add(d.a); emDupla.add(d.b); });
+    return Object.entries(dados.jogadores || {}).filter(([uid]) => !emDupla.has(uid));
+  };
+
+  function embaralhar(arr){
+    for(let i = arr.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  const novoId = () => "d" + Date.now().toString(36) + Math.random().toString(36).slice(2,6);
+
+  // Encaixa só quem está sem par. Não toca nas duplas que já estão jogando.
+  async function encaixar(){
+    const livres = embaralhar(semPar());
+    if(livres.length < 2){ alerta("Não há duas pessoas sem par no momento."); return; }
+    const novas = {};
+    while(livres.length >= 2){
+      const [a, b] = [livres.shift(), livres.shift()];
+      novas[novoId()] = { a:a[0], b:b[0], nomeA:a[1].nome, nomeB:b[1].nome, criada:Date.now() };
+    }
+    await db.ref(`salas/${codigo}/duplas`).update(novas);
+    await db.ref(`salas/${codigo}/fase`).set("jogo");
+  }
+
+  // Refaz tudo do zero, apagando o que já foi jogado.
+  async function sortearTudo(){
+    const js = Object.entries(dados.jogadores || {});
+    if(js.length < 2){ alerta("Precisa de pelo menos duas pessoas na sala."); return; }
+    if(Object.keys(dados.duplas || {}).length &&
+       !confirm("Isso desfaz todas as duplas e apaga as rodadas já jogadas. Continuar?")) return;
+    embaralhar(js);
+    const duplas = {};
+    while(js.length >= 2){
+      const [a, b] = [js.shift(), js.shift()];
+      duplas[novoId()] = { a:a[0], b:b[0], nomeA:a[1].nome, nomeB:b[1].nome, criada:Date.now() };
+    }
+    await db.ref("salas/" + codigo).update({ duplas, jogadas:null, prontos:null, fase:"jogo" });
+  }
+
+  const minhaDupla = () => {
+    for(const [id, d] of Object.entries(dados.duplas || {}))
+      if(d.a === UID || d.b === UID) return { id, ...d };
+    return null;
+  };
+
+  function render(){
+    if(papel !== "organizador") return renderJogador();
+    return tela === "resultados" ? renderResultados() : renderOrganizador();
+  }
+
+  /* ---------- painel do organizador ---------- */
+  function renderOrganizador(){
+    const js = Object.entries(dados.jogadores || {});
+    const livres = semPar();
+    const ds = Object.entries(dados.duplas || {});
+
+    if(!ds.length){
+      app.innerHTML = `
+        <div class="card">
+          <div class="rot" style="text-align:center;margin-bottom:8px">Código da sala</div>
+          <div class="codigo">${codigo}</div>
+          <p class="subitem" style="margin:0 0 14px">Mande o link e este código no chat do Teams. Os nomes aparecem aqui conforme entram. Anote o código: com ele você reabre este painel de qualquer navegador.</p>
+          <div class="lista">${
+            js.length ? js.map(([,j]) => `<div class="item">${esc(j.nome)}</div>`).join("")
+                      : `<div class="vazio"><span class="pulso"></span>Esperando o pessoal entrar…</div>`}</div>
+          <button class="full" id="formar">Formar duplas e começar (${js.length})</button>
+          <div class="voltar"><a id="sair">sair da sala</a></div>
+        </div>`;
+      const f = document.getElementById("formar");
+      if(f) f.addEventListener("click", encaixar);
+      document.getElementById("sair").addEventListener("click", sair);
+      return;
+    }
+
+    app.innerHTML = `
+      <div class="card">
+        <div class="rot">Painel do organizador</div>
+        <div class="codigo" style="font-size:26px;margin-top:8px">${codigo}</div>
+        <div class="subitem" style="text-align:center">${ds.length} duplas · ${js.length} pessoas na sala</div>
+        ${livres.length ? `<div class="semPar">Sem par no momento: ${livres.map(([,j]) => esc(j.nome)).join(", ")}.
+          ${livres.length >= 2 ? "Dá pra encaixar agora." : "Falta mais uma pessoa entrar pra formar a dupla."}</div>` : ""}
+      </div>
+      <div class="painel">${ds.map(([id,d]) => {
+        const r = resumoDupla(id, d);
+        return `<div class="dupla">
+          <div class="nomes"><span>${esc(d.nomeA)}</span><span>${esc(d.nomeB)}</span></div>
+          <div class="barra">
+            <span class="pl ${r.pa>=0?"pos":"neg"}">${r.pa>0?"+":""}${r.pa}</span>
+            <span>${r.completas >= 15 ? "terminou" : "rodada " + (r.completas+1)}</span>
+            <span class="pl ${r.pb>=0?"pos":"neg"}">${r.pb>0?"+":""}${r.pb}</span>
+          </div></div>`;
+      }).join("")}</div>
+      <div class="card" style="margin-top:12px">
+        <button class="full" id="encaixar" ${livres.length < 2 ? "disabled style=opacity:.45" : ""}>Encaixar quem está sem par (${livres.length})</button>
+        <p class="subitem">Cria duplas só com quem chegou depois. Quem já está jogando não é afetado.</p>
+        <button class="full" id="verRes" style="margin-top:12px">Ver resultados da turma</button>
+        <p class="subitem">Placar de cada dupla, escolhas rodada a rodada e exportação.</p>
+        <button class="full ghost perigo" id="refazer" style="margin-top:12px">Refazer todas as duplas do zero</button>
+        <p class="subitem">Apaga as rodadas já jogadas por todo mundo.</p>
+        <div class="voltar"><a id="sair">sair da sala</a></div>
+      </div>`;
+    document.getElementById("encaixar").addEventListener("click", encaixar);
+    document.getElementById("verRes").addEventListener("click", () => { tela = "resultados"; render(); });
+    document.getElementById("refazer").addEventListener("click", sortearTudo);
+    document.getElementById("sair").addEventListener("click", sair);
+  }
+
+  function resumoDupla(id, d){
+    const js = (dados.jogadas || {})[id] || {};
+    let pa = 0, pb = 0, completas = 0, rodadas = [];
+    for(let n = 1; n <= 15; n++){
+      const r = js[n];
+      const va = r && valor(r[d.a]), vb = r && valor(r[d.b]);
+      if(va && vb){
+        completas++;
+        const m = BONUS[n] || 1;
+        pa += pontos(va, vb) * m;
+        pb += pontos(vb, va) * m;
+        rodadas.push({ n, a:va, b:vb });
+      } else break;
+    }
+    return { pa, pb, completas, rodadas };
+  }
+
+  /* ---------- resultados ---------- */
+  function dadosResultados(){
+    const ds = Object.entries(dados.duplas || {}).map(([id,d]) => ({ id, d, r: resumoDupla(id,d) }));
+    const terminadas = ds.filter(x => x.r.completas === 15);
+    const somaTurma = ds.reduce((s,x) => s + x.r.pa + x.r.pb, 0);
+    const traiu15 = terminadas.filter(x => {
+      const u = x.r.rodadas[14];
+      return u && (u.a === "D" || u.b === "D");
+    }).length;
+    const soCoop = terminadas.filter(x => x.r.rodadas.every(v => v.a === "C" && v.b === "C")).length;
+    return { ds, terminadas, somaTurma, traiu15, soCoop };
+  }
+
+  function textoResultados(){
+    const { ds } = dadosResultados();
+    const linhas = ["dupla;jogador A;pontos A;jogador B;pontos B;rodadas jogadas;sequencia (A/B por rodada)"];
+    ds.forEach((x,i) => {
+      const seq = x.r.rodadas.map(v => v.a + v.b).join(" ");
+      linhas.push([i+1, x.d.nomeA, x.r.pa, x.d.nomeB, x.r.pb, x.r.completas, seq].join(";"));
+    });
+    return linhas.join("\n");
+  }
+
+  function renderResultados(){
+    const { ds, terminadas, somaTurma, traiu15, soCoop } = dadosResultados();
+    const maxTurma = ds.length * 62;
+    app.innerHTML = `
+      <div class="card">
+        <div class="rot">Resultados · sala ${codigo}</div>
+        <h2 style="margin-top:8px">${ds.length} duplas · ${terminadas.length} terminaram</h2>
+        <div class="resumo">
+          <div class="box"><div class="v ${somaTurma>=0?"pos":"neg"}" style="color:${somaTurma>=0?"var(--c)":"var(--d)"}">${somaTurma>0?"+":""}${somaTurma}</div>
+            <div class="l">Soma da turma inteira. O teto, se todos cooperassem sempre, seria ${maxTurma}.</div></div>
+          <div class="box"><div class="v">${traiu15}<span style="font-size:14px;color:var(--muted)">/${terminadas.length||0}</span></div>
+            <div class="l">Duplas com pelo menos uma traição na rodada 15, a que vale ×10.</div></div>
+          <div class="box"><div class="v">${soCoop}</div>
+            <div class="l">Duplas que cooperaram nas quinze rodadas, sem nenhuma traição.</div></div>
+          <div class="box"><div class="v">${ds.length ? Math.round(somaTurma / (ds.length*2)) : 0}</div>
+            <div class="l">Média de pontos por pessoa.</div></div>
+        </div>
+        <div class="linhaBtn">
+          <button id="copiar">Copiar tudo</button>
+          <button id="baixar" class="ghost">Baixar planilha</button>
+        </div>
+      </div>
+      <div class="painel">${ds.map(x => {
+        const seq = x.r.rodadas.map(v => {
+          const t = v.a + v.b;
+          const marca = BONUS[v.n] ? `<u>${t}</u>` : (t.includes("D") ? `<i>${t}</i>` : t);
+          return marca;
+        }).join(" ");
+        return `<div class="dupla">
+          <div class="nomes"><span>${esc(x.d.nomeA)}</span><span>${esc(x.d.nomeB)}</span></div>
+          <div class="barra">
+            <span class="pl ${x.r.pa>=0?"pos":"neg"}">${x.r.pa>0?"+":""}${x.r.pa}</span>
+            <span>${x.r.completas === 15 ? "completo" : x.r.completas + "/15"}</span>
+            <span class="pl ${x.r.pb>=0?"pos":"neg"}">${x.r.pb>0?"+":""}${x.r.pb}</span>
+          </div>
+          ${x.r.rodadas.length ? `<div class="seq">${seq}</div>` : ""}
+        </div>`;
+      }).join("") || `<div class="vazio">Nenhuma dupla formada ainda.</div>`}</div>
+      <div class="card" style="margin-top:12px">
+        <button class="full ghost" id="voltarPainel">Voltar ao painel</button>
+      </div>`;
+
+    document.getElementById("voltarPainel").addEventListener("click", () => { tela = "jogo"; render(); });
+    document.getElementById("copiar").addEventListener("click", async () => {
+      const t = textoResultados();
+      try{ await navigator.clipboard.writeText(t); alerta("Resultados copiados."); }
+      catch(e){ alerta("Não consegui copiar aqui. Use o botão de baixar."); }
+    });
+    document.getElementById("baixar").addEventListener("click", () => {
+      const blob = new Blob(["\ufeff" + textoResultados()], {type:"text/csv;charset=utf-8"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `resultados-${codigo}.csv`;
+      a.click();
+    });
+  }
+
+  /* ---------- tela do jogador ---------- */
+  function renderJogador(){
+    const dup = minhaDupla();
+
+    if(!dup){
+      const n = Object.keys(dados.jogadores || {}).length;
+      app.innerHTML = `<div class="card">
+        <div class="rot" style="text-align:center;margin-bottom:8px">Sala ${codigo}</div>
+        <div class="vazio"><span class="pulso"></span>Você está na sala. Esperando o organizador formar a sua dupla.</div>
+        <div class="vazio" style="padding-top:0">${n} ${n === 1 ? "pessoa" : "pessoas"} na sala</div>
+        <p class="subitem" style="text-align:center">Se você chegou depois do sorteio, não precisa fazer nada: o organizador consegue encaixar você sem desfazer as outras duplas.</p>
+      </div>` + MATRIZ;
+      return;
+    }
+
+    const eleUid  = dup.a === UID ? dup.b : dup.a;
+    const eleNome = dup.a === UID ? dup.nomeB : dup.nomeA;
+    const js = (dados.jogadas || {})[dup.id] || {};
+    const pr = (dados.prontos || {})[dup.id] || {};
+
+    const hist = [];
+    let n = 1;
+    for(; n <= 15; n++){
+      const r = js[n];
+      const meu = r && valor(r[UID]), dele = r && valor(r[eleUid]);
+      if(meu && dele) hist.push({ n, eu:meu, ele:dele, p: pontos(meu, dele) * (BONUS[n] || 1) });
+      else break;
+    }
+    const ac = hist.reduce((s,r) => s + r.p, 0);
+    const minha = js[n] ? valor(js[n][UID]) : null;
+
+    let corpo;
+    if(n > 15){
+      corpo = `<div class="card">
+        <div class="rot">Fim do exercício</div>
+        <div class="total ${ac>=0?"pos":"neg"}" style="font-size:44px;margin:6px 0 10px">${ac>0?"+":""}${ac}</div>
+        <p style="font-size:14.5px;color:#C9D4DD;margin:0">Se vocês dois tivessem cooperado nas quinze rodadas, cada um sairia com +31. Traindo sempre, −31. Guarde o número e as escolhas pra discussão.</p>
+      </div>`;
+    } else {
+      const b = BONUS[n];
+      const rp = (pr[n] || {});
+      const euPronto = !!rp[UID], elePronto = !!rp[eleUid];
+      const liberado = !b || (euPronto && elePronto);
+
+      corpo = `<div class="rodada ${b?"bonus":""}">
+        <div class="cabR"><span class="num">Rodada ${n}</span>${b?`<span class="chip">bônus ×${b}</span>`:""}</div>`;
+
+      if(b && !liberado){
+        corpo += `<div class="aviso">Rodada bônus: agora vocês podem conversar. Combine com ${esc(eleNome)} pelo Teams antes de decidir.</div>`;
+        corpo += euPronto
+          ? `<div class="aguardo"><span class="pronto">Você marcou que está pronto.</span><br>
+               <span class="pulso"></span>Esperando ${esc(eleNome)} terminar a conversa.</div>`
+          : `<button class="full" id="pronto">Já conversamos, liberar as jogadas</button>
+             <p class="subitem" style="text-align:center">Os botões D e C só aparecem quando os dois marcarem.
+             ${elePronto ? `<br>${esc(eleNome)} já marcou.` : ""}</p>`;
+      } else if(!minha){
+        corpo += `<div class="escolhas">
+            <button class="esc" data-v="D">D<small>ganha 3 se ele for C · perde 1 se ele for D</small></button>
+            <button class="esc" data-v="C">C<small>ganha 1 se ele for C · perde 3 se ele for D</small></button>
+          </div>`;
+      } else {
+        corpo += `<div class="esperando">
+            <b class="${minha}">${minha}</b>
+            Sua jogada está travada.<br><span class="pulso"></span>Esperando ${esc(eleNome)} escolher.
+          </div>`;
+      }
+      corpo += `</div>`;
+    }
+
+    let rev = "";
+    const ult = hist[hist.length - 1];
+    if(ult && vistas[dup.id + ":" + ult.n] !== true){
+      vistas[dup.id + ":" + ult.n] = true;
+      let msg;
+      if(ult.eu === ult.ele && ult.eu === "C") msg = "Cooperação dos dois lados.";
+      else if(ult.eu === ult.ele) msg = "Traição dos dois lados — os dois perdem.";
+      else if(ult.eu === "D") msg = "Você traiu quem cooperou.";
+      else msg = "Você cooperou e o outro traiu.";
+      rev = `<div class="card">
+        <div class="rot" style="margin-bottom:10px">Rodada ${ult.n} revelada</div>
+        <div class="revelacao">
+          <div class="rev"><div class="quem">Você</div><div class="jog ${ult.eu}">${ult.eu}</div></div>
+          <div class="rev"><div class="quem">${esc(eleNome)}</div><div class="jog ${ult.ele}">${ult.ele}</div></div>
+        </div>
+        <div class="saldo ${ult.p>=0?"pos":"neg"}">${ult.p>0?"+":""}${ult.p}</div>
+        <div class="nota" style="margin-bottom:0">${msg}</div>
+      </div>`;
+    }
+
+    let acu = 0;
+    const histHtml = hist.length ? `<div class="hist"><span class="rot">Rodadas jogadas</span>` +
+      hist.map(r => { acu += r.p; return `<div class="lin">
+        <span class="n">${String(r.n).padStart(2,"0")}</span>
+        <span>você <b>${r.eu}</b> · ele <b>${r.ele}</b></span>
+        ${BONUS[r.n]?`<span class="b">×${BONUS[r.n]}</span>`:""}
+        <span class="p ${r.p>=0?"pos":"neg"}">${r.p>0?"+":""}${r.p}</span>
+        <span class="ac">${acu}</span></div>`; }).join("") + `</div>` : "";
+
+    app.innerHTML = `
+      <div class="topo">
+        <div><div class="rot">Seu acumulado</div>
+          <div class="total ${ac>=0?"pos":"neg"}">${ac>0?"+":""}${ac}</div></div>
+        <div class="parceiro">dupla com <b>${esc(eleNome)}</b></div>
+      </div>` + rev + corpo + histHtml;
+
+    const bp = document.getElementById("pronto");
+    if(bp) bp.addEventListener("click", async () => {
+      bp.disabled = true;
+      await db.ref(`salas/${codigo}/prontos/${dup.id}/${n}/${UID}`).set(true);
+    });
+
+    app.querySelectorAll("button.esc").forEach(btn => btn.addEventListener("click", async () => {
+      app.querySelectorAll("button.esc").forEach(b => b.disabled = true);
+      // grava valor + horário e quem gravou, pra dar pra auditar depois no console
+      await db.ref(`salas/${codigo}/jogadas/${dup.id}/${n}/${UID}`)
+        .set({ v: btn.dataset.v, t: Date.now() });
+    }));
+  }
+
+  /* ---------- arranque ---------- */
+  if(!configOk()){ telaConfig(); return; }
+  try{
+    firebase.initializeApp(FIREBASE_CONFIG);
+    db = firebase.database();
+    telaInicio();
+  }catch(e){
+    app.innerHTML = `<div class="card"><div class="erro">Não consegui iniciar o Firebase: ${esc(e.message)}</div></div>`;
+  }
+})();
+
+</script>
+</body>
+</html>
