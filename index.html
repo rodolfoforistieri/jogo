@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maximize seu ganho — online</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#131A22; --surface:#1B242F; --surface2:#18212B; --line:#2F3D4C;
+    --txt:#E8EDF1; --muted:#8B9BAA; --d:#E0553C; --c:#3FB0A0; --gold:#E5B44B;
+    --display:"Space Grotesk",system-ui,sans-serif;
+    --body:"IBM Plex Sans",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--txt);font-family:var(--body);font-size:16px;
+    line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:640px;margin:0 auto;padding:24px 16px 70px}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  h1{font-family:var(--display);font-weight:700;font-size:clamp(26px,6vw,36px);line-height:1.05;
+    margin:8px 0 6px;letter-spacing:-.02em}
+  .sub{color:var(--muted);font-size:14px;margin:0 0 22px}
+  .card{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:16px;margin-bottom:12px}
+  .card h2{font-family:var(--display);font-size:16px;font-weight:500;margin:0 0 12px}
+  label{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  input{width:100%;font-family:var(--body);font-size:16px;padding:11px 12px;border-radius:8px;
+    border:1px solid var(--line);background:var(--surface2);color:var(--txt);margin-bottom:12px}
+  input:focus{outline:2px solid var(--gold);outline-offset:1px}
+  input.cod{font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em}
+  button{font-family:var(--body);font-size:15px;padding:12px 16px;border-radius:8px;
+    border:1px solid var(--line);background:#222D3A;color:var(--txt);cursor:pointer;transition:border-color .15s}
+  button:hover{border-color:#4A5D70}
+  button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  button.full{width:100%}
+  button.ghost{background:transparent}
+  .linhaBtn{display:flex;gap:10px;flex-wrap:wrap}
+
+  .codigo{font-family:var(--mono);font-weight:600;font-size:34px;letter-spacing:.14em;
+    color:var(--gold);text-align:center;padding:14px;border:1px dashed rgba(229,180,75,.4);
+    border-radius:10px;margin-bottom:14px}
+  .lista{display:grid;gap:6px;margin-bottom:14px}
+  .item{display:flex;gap:10px;align-items:center;padding:8px 11px;background:var(--surface2);
+    border:1px solid var(--line);border-radius:7px;font-size:14.5px}
+  .item .tag{margin-left:auto;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+  .vazio{color:var(--muted);font-size:14px;text-align:center;padding:14px 0}
+
+  .topo{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+  .rot{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .total{font-family:var(--mono);font-weight:600;font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+  .total.pos{color:var(--c)} .total.neg{color:var(--d)}
+  .parceiro{margin-left:auto;font-size:13.5px;color:var(--muted)}
+  .parceiro b{color:var(--txt);font-weight:500}
+
+  .rodada{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:18px 16px}
+  .rodada.bonus{border-color:rgba(229,180,75,.45)}
+  .cabR{display:flex;align-items:center;gap:9px;margin-bottom:14px}
+  .num{font-family:var(--display);font-weight:700;font-size:19px}
+  .chip{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--gold);
+    border:1px solid rgba(229,180,75,.4);border-radius:99px;padding:1px 8px}
+  .aviso{border-left:2px solid var(--gold);padding:2px 0 2px 12px;margin-bottom:15px;font-size:14.5px;color:#D8DEE4}
+  .escolhas{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  button.esc{font-family:var(--display);font-weight:700;font-size:16px;padding:15px 8px;background:var(--surface2);line-height:1.25}
+  button.esc small{display:block;font-family:var(--body);font-weight:400;font-size:12px;color:var(--muted);margin-top:3px}
+  button.esc[data-v="D"]:hover{border-color:var(--d)}
+  button.esc[data-v="C"]:hover{border-color:var(--c)}
+  .esperando{text-align:center;padding:18px 0;color:var(--muted);font-size:14.5px}
+  .esperando b{display:block;font-family:var(--display);font-weight:700;font-size:30px;margin-bottom:8px}
+  .esperando b.D{color:var(--d)} .esperando b.C{color:var(--c)}
+  .pulso{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);
+    margin-right:7px;animation:p 1.2s ease-in-out infinite}
+  @keyframes p{0%,100%{opacity:.25}50%{opacity:1}}
+  .revelacao{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+  .rev{border:1px solid var(--line);border-radius:8px;padding:12px 10px;text-align:center;background:var(--surface2)}
+  .rev .quem{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .rev .jog{font-family:var(--display);font-weight:700;font-size:30px;line-height:1}
+  .jog.D{color:var(--d)} .jog.C{color:var(--c)}
+  .saldo{text-align:center;font-family:var(--mono);font-weight:600;font-size:25px;margin-bottom:4px;font-variant-numeric:tabular-nums}
+  .saldo.pos{color:var(--c)} .saldo.neg{color:var(--d)}
+  .nota{text-align:center;font-size:13.5px;color:var(--muted);margin-bottom:14px}
+
+  .hist{margin-top:20px}
+  .hist .rot{display:block;margin-bottom:8px}
+  .lin{display:flex;align-items:center;gap:10px;padding:7px 10px;border-bottom:1px solid var(--line);
+    font-family:var(--mono);font-size:13px}
+  .lin:first-of-type{border-top:1px solid var(--line)}
+  .lin .n{color:var(--muted);min-width:22px}
+  .lin .b{color:var(--gold);font-size:11px}
+  .lin .p{margin-left:auto;font-weight:600;font-variant-numeric:tabular-nums}
+  .lin .p.pos{color:var(--c)} .lin .p.neg{color:var(--d)}
+  .lin .ac{color:var(--muted);min-width:44px;text-align:right}
+
+  .matriz{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line);
+    border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:18px}
+  .cel{background:var(--surface);padding:10px 7px;text-align:center}
+  .cel b{display:block;font-family:var(--mono);font-size:13.5px}
+  .cel span{display:block;font-size:11px;color:var(--muted);margin-top:2px}
+
+  .painel{display:grid;gap:8px}
+  .dupla{border:1px solid var(--line);border-radius:8px;background:var(--surface2);padding:11px 12px}
+  .dupla .nomes{display:flex;justify-content:space-between;font-size:14.5px;margin-bottom:5px}
+  .dupla .barra{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .dupla .pl{font-weight:600}
+  .dupla .pl.pos{color:var(--c)} .dupla .pl.neg{color:var(--d)}
+
+  .erro{border-left:3px solid var(--d);padding:10px 12px;background:rgba(224,85,60,.09);
+    border-radius:0 8px 8px 0;font-size:14px;margin-bottom:14px}
+  .passos{font-size:14.5px;color:#C9D4DD}
+  .passos ol{padding-left:20px;margin:0}
+  .passos li{margin-bottom:9px}
+  code{font-family:var(--mono);font-size:12.5px;background:var(--surface2);padding:1px 5px;
+    border-radius:4px;border:1px solid var(--line)}
+  pre{font-family:var(--mono);font-size:12px;background:var(--surface2);border:1px solid var(--line);
+    border-radius:8px;padding:12px;overflow-x:auto;line-height:1.5}
+  footer{margin-top:30px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:#6F808F;line-height:1.5}
+  @media (max-width:420px){.matriz{grid-template-columns:1fr}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">CNJ · exercício em dupla · 15 rodadas</div>
+  <h1>Maximize seu ganho</h1>
+  <p class="sub" id="sub">Cada dupla joga no próprio ritmo. A jogada trava quando você confirma.</p>
+  <div id="app"><div class="card"><div class="vazio"><span class="pulso"></span>Conectando…</div></div></div>
+  <footer>
+    Exercício do CNJ adaptado do modelo de Flood-Dresher (1950) e da dinâmica <em>Win as much as you can</em>, do Prof. Michael Wheeler (Harvard). Material do GT RAD / Faculdade de Direito da UnB. Pesquisador responsável: André Gomma de Azevedo.
+  </footer>
+</div>
+
+<!-- ════════ COLE SUAS CHAVES DO FIREBASE AQUI ════════ -->
+<script>
+  const FIREBASE_CONFIG = {
+    databaseURL: "https://jogo-4310c-default-rtdb.firebaseio.com/",
+    projectId: "jogo-4310c"
+  };
+</script>
+<!-- ═══════════════════════════════════════════════════ -->
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script>
+(function(){
+  const BONUS = {4:2, 8:3, 12:5, 15:10};
+  const app = document.getElementById("app");
+  const MATRIZ = `<div class="matriz">
+      <div class="cel"><b>2 D</b><span>cada um perde 1</span></div>
+      <div class="cel"><b>1 D · 1 C</b><span>D ganha 3 · C perde 3</span></div>
+      <div class="cel"><b>2 C</b><span>cada um ganha 1</span></div>
+    </div>`;
+
+  /* ---------- identidade local ---------- */
+  function meuId(){
+    let id;
+    try{ id = localStorage.getItem("msg_uid"); }catch(e){}
+    if(!id){
+      id = "u" + Math.random().toString(36).slice(2,10);
+      try{ localStorage.setItem("msg_uid", id); }catch(e){}
+    }
+    return id;
+  }
+  const UID = meuId();
+
+  /* ---------- estado ---------- */
+  let db = null, sala = null, codigo = null, papel = null, dados = {}, ref = null, vistas = {};
+
+  const pontos = (eu, ele) => eu === "D" ? (ele === "D" ? -1 : 3) : (ele === "D" ? -3 : 1);
+  const esc = s => String(s||"").replace(/[<>&"]/g, c => ({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
+
+  /* ---------- checagem de configuração ---------- */
+  function configOk(){
+    return FIREBASE_CONFIG.databaseURL && !String(FIREBASE_CONFIG.databaseURL).includes("COLE_AQUI");
+  }
+
+  function telaConfig(){
+    document.getElementById("sub").textContent = "Falta ligar o banco de dados antes de usar.";
+    app.innerHTML = `
+      <div class="card">
+        <div class="erro">As chaves do Firebase ainda não foram coladas neste arquivo. Sem isso, os dois aparelhos não se enxergam.</div>
+        <h2>O que fazer, na ordem</h2>
+        <div class="passos"><ol>
+          <li>Entre em <code>console.firebase.google.com</code> com sua conta Google e crie um projeto. Pode recusar o Google Analytics.</li>
+          <li>No menu lateral, abra <b>Criar → Realtime Database</b> e clique em criar. Escolha a região <code>us-central1</code> e o modo de teste.</li>
+          <li>Ainda no Realtime Database, aba <b>Regras</b>, substitua tudo por isto e publique:
+            <pre>{
+  "rules": {
+    "salas": {
+      ".read": true,
+      ".write": true
+    }
+  }
+}</pre></li>
+          <li>Vá em <b>Configurações do projeto</b> (engrenagem) → role até <b>Seus apps</b> → ícone <code>&lt;/&gt;</code> (Web) → registre o app.</li>
+          <li>Vai aparecer um bloco <code>firebaseConfig</code>. Copie os valores de <code>apiKey</code>, <code>authDomain</code>, <code>databaseURL</code> e <code>projectId</code> e cole no topo deste arquivo, onde está escrito COLE_AQUI.</li>
+          <li>Suba o arquivo como <code>index.html</code> num repositório do GitHub e ative o Pages em Settings → Pages.</li>
+        </ol></div>
+        <div class="erro" style="border-color:var(--gold);background:rgba(229,180,75,.08);margin-top:14px">
+          Essas regras deixam qualquer pessoa com o link escrever no banco. Serve pra teste e pra uma turma fechada. Se for usar de verdade com frequência, me chame que eu aperto as regras.
+        </div>
+      </div>`;
+  }
+
+  /* ---------- início ---------- */
+  function telaInicio(){
+    app.innerHTML = MATRIZ + `
+      <div class="card">
+        <h2>Entrar numa sala</h2>
+        <label for="nome">Seu nome</label>
+        <input id="nome" maxlength="30" placeholder="Rodolfo" autocomplete="name">
+        <label for="cod">Código da sala</label>
+        <input id="cod" class="cod" maxlength="6" placeholder="ABCD12" autocomplete="off">
+        <button class="full" id="entrar">Entrar</button>
+      </div>
+      <div class="card">
+        <h2>Organizar a turma</h2>
+        <p style="font-size:14px;color:var(--muted);margin:0 0 12px">Cria a sala, sorteia as duplas e acompanha todo mundo por um painel.</p>
+        <button class="full ghost" id="criar">Criar sala</button>
+      </div>`;
+
+    document.getElementById("criar").addEventListener("click", async () => {
+      codigo = Array.from({length:6}, () =>
+        "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"[Math.floor(Math.random()*32)]).join("");
+      papel = "organizador";
+      await db.ref("salas/" + codigo).set({ criada: Date.now(), fase: "espera" });
+      escutar();
+    });
+
+    document.getElementById("entrar").addEventListener("click", async () => {
+      const nome = document.getElementById("nome").value.trim();
+      const cod  = document.getElementById("cod").value.trim().toUpperCase();
+      if(!nome || cod.length !== 6){ alerta("Preencha o nome e o código de 6 letras."); return; }
+      const snap = await db.ref("salas/" + cod).get();
+      if(!snap.exists()){ alerta("Não achei nenhuma sala com esse código."); return; }
+      codigo = cod; papel = "jogador";
+      await db.ref(`salas/${cod}/jogadores/${UID}`).set({ nome, entrou: Date.now() });
+      escutar();
+    });
+  }
+
+  function alerta(msg){
+    const c = app.querySelector(".card");
+    let e = c.querySelector(".erro");
+    if(!e){ e = document.createElement("div"); e.className = "erro"; c.insertBefore(e, c.firstChild); }
+    e.textContent = msg;
+  }
+
+  /* ---------- escuta em tempo real ---------- */
+  function escutar(){
+    if(ref) ref.off();
+    ref = db.ref("salas/" + codigo);
+    ref.on("value", snap => {
+      dados = snap.val() || {};
+      render();
+    }, err => {
+      app.innerHTML = `<div class="card"><div class="erro">O banco recusou a conexão: ${esc(err.message)}<br><br>Quase sempre é a regra de escrita. Confira o passo 3 da configuração.</div></div>`;
+    });
+  }
+
+  /* ---------- sorteio ---------- */
+  async function sortear(){
+    const js = Object.entries(dados.jogadores || {});
+    if(js.length < 2){ alerta("Precisa de pelo menos duas pessoas na sala."); return; }
+    for(let i = js.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [js[i], js[j]] = [js[j], js[i]];
+    }
+    const duplas = {};
+    let n = 1, sobra = null;
+    while(js.length >= 2){
+      const [a, b] = [js.shift(), js.shift()];
+      duplas["d" + (n++)] = { a:a[0], b:b[0], nomeA:a[1].nome, nomeB:b[1].nome };
+    }
+    if(js.length) sobra = js[0][1].nome;
+    await db.ref("salas/" + codigo).update({ duplas, fase:"jogo", sobra: sobra || null });
+  }
+
+  const minhaDupla = () => {
+    const ds = dados.duplas || {};
+    for(const [id, d] of Object.entries(ds)) if(d.a === UID || d.b === UID) return { id, ...d };
+    return null;
+  };
+
+  /* ---------- render ---------- */
+  function render(){
+    if(papel === "organizador") return renderOrganizador();
+    return renderJogador();
+  }
+
+  function renderOrganizador(){
+    const js = Object.entries(dados.jogadores || {});
+    if(dados.fase === "espera"){
+      app.innerHTML = `
+        <div class="card">
+          <div class="rot" style="text-align:center;margin-bottom:8px">Código da sala</div>
+          <div class="codigo">${codigo}</div>
+          <p style="font-size:14px;color:var(--muted);margin:0 0 14px">Mande o link e este código no chat do Teams. Os nomes aparecem aqui conforme entram.</p>
+          <div class="lista">${
+            js.length ? js.map(([,j]) => `<div class="item">${esc(j.nome)}</div>`).join("")
+                      : `<div class="vazio"><span class="pulso"></span>Esperando o pessoal entrar…</div>`}</div>
+          <button class="full" id="sortear">Sortear duplas e começar (${js.length})</button>
+        </div>`;
+      const s = document.getElementById("sortear");
+      if(s) s.addEventListener("click", sortear);
+      return;
+    }
+
+    const ds = Object.entries(dados.duplas || {});
+    app.innerHTML = `
+      <div class="card">
+        <div class="rot">Sala ${codigo} · ${ds.length} duplas</div>
+        ${dados.sobra ? `<div class="erro" style="margin-top:10px">${esc(dados.sobra)} ficou sem par (número ímpar). Peça pra alguém acompanhar em trio ou sorteie de novo.</div>` : ""}
+      </div>
+      <div class="painel">${ds.map(([id,d]) => {
+        const r = resumoDupla(id, d);
+        return `<div class="dupla">
+          <div class="nomes"><span>${esc(d.nomeA)}</span><span>${esc(d.nomeB)}</span></div>
+          <div class="barra">
+            <span class="pl ${r.pa>=0?"pos":"neg"}">${r.pa>0?"+":""}${r.pa}</span>
+            <span>${r.completas >= 15 ? "terminou" : "rodada " + (r.completas+1)}</span>
+            <span class="pl ${r.pb>=0?"pos":"neg"}">${r.pb>0?"+":""}${r.pb}</span>
+          </div></div>`;
+      }).join("")}</div>
+      <div class="card" style="margin-top:12px">
+        <button class="full ghost" id="resortear">Sortear as duplas de novo</button>
+      </div>`;
+    document.getElementById("resortear").addEventListener("click", sortear);
+  }
+
+  function resumoDupla(id, d){
+    const js = (dados.jogadas || {})[id] || {};
+    let pa = 0, pb = 0, completas = 0;
+    for(let n = 1; n <= 15; n++){
+      const r = js[n];
+      if(r && r[d.a] && r[d.b]){
+        completas++;
+        const m = BONUS[n] || 1;
+        pa += pontos(r[d.a], r[d.b]) * m;
+        pb += pontos(r[d.b], r[d.a]) * m;
+      } else break;
+    }
+    return { pa, pb, completas };
+  }
+
+  function renderJogador(){
+    if(dados.fase === "espera"){
+      const n = Object.keys(dados.jogadores || {}).length;
+      app.innerHTML = `<div class="card">
+        <div class="rot" style="text-align:center;margin-bottom:8px">Sala ${codigo}</div>
+        <div class="vazio"><span class="pulso"></span>Você entrou. Esperando o sorteio das duplas.</div>
+        <div class="vazio" style="padding-top:0">${n} ${n === 1 ? "pessoa" : "pessoas"} na sala</div>
+      </div>` + MATRIZ;
+      return;
+    }
+
+    const dup = minhaDupla();
+    if(!dup){
+      app.innerHTML = `<div class="card"><div class="erro">O sorteio aconteceu e você ficou sem par — provavelmente entrou depois. Peça pro organizador sortear de novo.</div></div>`;
+      return;
+    }
+
+    const sou = dup.a === UID ? "a" : "b";
+    const eleUid  = sou === "a" ? dup.b : dup.a;
+    const eleNome = sou === "a" ? dup.nomeB : dup.nomeA;
+    const js = (dados.jogadas || {})[dup.id] || {};
+
+    // histórico e rodada atual
+    const hist = [];
+    let n = 1;
+    for(; n <= 15; n++){
+      const r = js[n];
+      if(r && r[UID] && r[eleUid]){
+        const p = pontos(r[UID], r[eleUid]) * (BONUS[n] || 1);
+        hist.push({ n, eu:r[UID], ele:r[eleUid], p });
+      } else break;
+    }
+    const ac = hist.reduce((s,r) => s + r.p, 0);
+    const minha = js[n] ? js[n][UID] : null;
+
+    let corpo;
+    if(n > 15){
+      corpo = `<div class="card">
+        <div class="rot">Fim do exercício</div>
+        <div class="total ${ac>=0?"pos":"neg"}" style="font-size:44px;margin:6px 0 10px">${ac>0?"+":""}${ac}</div>
+        <p style="font-size:14.5px;color:#C9D4DD;margin:0">Se vocês dois tivessem cooperado nas quinze rodadas, cada um sairia com +31. Traindo sempre, −31. Guarde o número e as escolhas pra discussão.</p>
+      </div>`;
+    } else {
+      const b = BONUS[n];
+      corpo = `<div class="rodada ${b?"bonus":""}">
+        <div class="cabR"><span class="num">Rodada ${n}</span>${b?`<span class="chip">bônus ×${b}</span>`:""}</div>`;
+      if(!minha){
+        if(b) corpo += `<div class="aviso">Rodada bônus: agora vocês podem conversar. Combine com ${esc(eleNome)} pelo Teams antes de escolher.</div>`;
+        corpo += `<div class="escolhas">
+            <button class="esc" data-v="D">D<small>ganha 3 se ele for C · perde 1 se ele for D</small></button>
+            <button class="esc" data-v="C">C<small>ganha 1 se ele for C · perde 3 se ele for D</small></button>
+          </div>`;
+      } else {
+        corpo += `<div class="esperando">
+            <b class="${minha}">${minha}</b>
+            Sua jogada está travada.<br><span class="pulso"></span>Esperando ${esc(eleNome)} escolher.
+          </div>`;
+      }
+      corpo += `</div>`;
+    }
+
+    // revelação da última rodada fechada (uma vez)
+    let rev = "";
+    const ult = hist[hist.length - 1];
+    if(ult && vistas[dup.id + ":" + ult.n] !== true){
+      vistas[dup.id + ":" + ult.n] = true;
+      let msg;
+      if(ult.eu === ult.ele && ult.eu === "C") msg = "Cooperação dos dois lados.";
+      else if(ult.eu === ult.ele) msg = "Traição dos dois lados — os dois perdem.";
+      else if(ult.eu === "D") msg = "Você traiu quem cooperou.";
+      else msg = "Você cooperou e o outro traiu.";
+      rev = `<div class="card">
+        <div class="rot" style="margin-bottom:10px">Rodada ${ult.n} revelada</div>
+        <div class="revelacao">
+          <div class="rev"><div class="quem">Você</div><div class="jog ${ult.eu}">${ult.eu}</div></div>
+          <div class="rev"><div class="quem">${esc(eleNome)}</div><div class="jog ${ult.ele}">${ult.ele}</div></div>
+        </div>
+        <div class="saldo ${ult.p>=0?"pos":"neg"}">${ult.p>0?"+":""}${ult.p}</div>
+        <div class="nota" style="margin-bottom:0">${msg}</div>
+      </div>`;
+    }
+
+    let acu = 0;
+    const histHtml = hist.length ? `<div class="hist"><span class="rot">Rodadas jogadas</span>` +
+      hist.map(r => { acu += r.p; return `<div class="lin">
+        <span class="n">${String(r.n).padStart(2,"0")}</span>
+        <span>você <b>${r.eu}</b> · ele <b>${r.ele}</b></span>
+        ${BONUS[r.n]?`<span class="b">×${BONUS[r.n]}</span>`:""}
+        <span class="p ${r.p>=0?"pos":"neg"}">${r.p>0?"+":""}${r.p}</span>
+        <span class="ac">${acu}</span></div>`; }).join("") + `</div>` : "";
+
+    app.innerHTML = `
+      <div class="topo">
+        <div><div class="rot">Seu acumulado</div>
+          <div class="total ${ac>=0?"pos":"neg"}">${ac>0?"+":""}${ac}</div></div>
+        <div class="parceiro">dupla com <b>${esc(eleNome)}</b></div>
+      </div>` + rev + corpo + histHtml;
+
+    app.querySelectorAll("button.esc").forEach(btn => btn.addEventListener("click", async () => {
+      app.querySelectorAll("button.esc").forEach(b => b.disabled = true);
+      await db.ref(`salas/${codigo}/jogadas/${dup.id}/${n}/${UID}`).set(btn.dataset.v);
+    }));
+  }
+
+  /* ---------- arranque ---------- */
+  if(!configOk()){ telaConfig(); return; }
+  try{
+    firebase.initializeApp(FIREBASE_CONFIG);
+    db = firebase.database();
+    telaInicio();
+  }catch(e){
+    app.innerHTML = `<div class="card"><div class="erro">Não consegui iniciar o Firebase: ${esc(e.message)}</div></div>`;
+  }
+})();
+</script>
+</body>
+</html>
