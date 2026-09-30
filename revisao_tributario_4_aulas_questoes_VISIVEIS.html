@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Revisão Tributário — 4 aulas</title>
+<style>
+:root {
+  --bg:#000;
+  --card:#101114;
+  --card2:#17191d;
+  --text:#f3f4f6;
+  --muted:#aab2bf;
+  --line:#2a2f37;
+  --accent:#78a8ff;
+  --answer:#0f2b1a;
+  --answerline:#2d7a49;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  line-height:1.55;
+}
+.wrap{max-width:900px;margin:0 auto;padding:14px}
+header{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:16px;
+}
+h1{font-size:26px;margin:0 0 8px}
+h2{font-size:21px;margin:0 0 10px}
+h3{font-size:20px;margin:0 0 6px}
+.sub{color:var(--muted);font-size:14px}
+.nav{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px}
+.nav a{
+  color:var(--text);
+  text-decoration:none;
+  background:var(--card2);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:10px;
+  text-align:center;
+  font-size:14px;
+}
+.class-block{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  overflow:hidden;
+  margin:18px 0 28px;
+}
+.class-title{
+  padding:14px 18px;
+  background:#181b20;
+  border-bottom:1px solid var(--line);
+  font-weight:800;
+  font-size:20px;
+}
+.lesson{padding:18px}
+.lesson p{white-space:pre-line;margin:0}
+.quiz-section{border-top:1px solid var(--line);padding:18px}
+.hint{color:var(--muted);font-size:14px;margin:0 0 14px}
+.question-card{
+  background:var(--card2);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:15px;
+  margin:14px 0;
+}
+.qnum{color:var(--accent);font-weight:700;font-size:13px;margin-bottom:6px}
+.qtext{font-weight:700;margin-bottom:12px}
+.options{display:grid;gap:8px}
+.opt{
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+  padding:11px 12px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#111318;
+  cursor:pointer;
+}
+.opt input{margin-top:4px;transform:scale(1.15)}
+.answer{margin-top:12px}
+.answer summary{
+  cursor:pointer;
+  color:var(--accent);
+  font-weight:700;
+  padding:8px 0;
+}
+.answer-box{
+  margin-top:8px;
+  padding:12px;
+  border:1px solid var(--answerline);
+  border-radius:10px;
+  background:var(--answer);
+}
+.why{margin-top:7px;color:#d7eadf}
+footer{color:var(--muted);font-size:13px;padding:8px 2px 28px}
+@media(max-width:650px){
+  .wrap{padding:10px}
+  .nav{grid-template-columns:1fr 1fr}
+  h1{font-size:23px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Revisão de Direito Tributário</h1>
+  <div class="sub">Versão estática: as questões já ficam carregadas dentro do próprio HTML. Não depende de JavaScript para aparecer.</div>
+  <div class="nav">
+    <a href="#icms">Aula 2 — ICMS</a>
+    <a href="#ipva">Aula 3 — IPVA</a>
+    <a href="#itcmd">Aula 4 — ITCMD</a>
+    <a href="#iptu">Aula 5 — IPTU</a>
+  </div>
+</header>
+
+
+    <section class="class-block" id="icms">
+      <div class="class-title">Aula 2 — ICMS</div>
+      <div class="lesson">
+        <h2>ICMS — circulação jurídica, não cumulatividade e DIFAL</h2>
+        <p>Para a prova, o ponto mais útil do ICMS é distinguir circulação física de circulação jurídica. A mera movimentação de mercadoria não basta, por si só, para caracterizar a operação tributável quando não há mudança de titularidade. Assim, a transferência de mercadorias entre estabelecimentos do mesmo titular foi trabalhada na aula como hipótese que não deve ser confundida automaticamente com venda.
+
+Outro eixo é a não cumulatividade. O sistema permite compensar o imposto devido nas saídas com créditos relacionados às entradas, conforme a disciplina aplicável. Em linguagem de memorização: débito nas saídas menos crédito das entradas resulta no valor a recolher. A ideia é impedir que o ICMS se acumule integralmente em cada etapa da cadeia.
+
+A substituição tributária também aparece como técnica pela qual a lei atribui a um contribuinte a responsabilidade pelo recolhimento do imposto devido em outras etapas, inclusive em situações de fato gerador presumido futuro. Se o fato presumido não ocorrer, a aula destaca a lógica da restituição.
+
+No DIFAL, a revisão usa a diferença entre a alíquota interna do Estado de destino e a alíquota interestadual. O objetivo é repartir adequadamente a tributação nas operações interestaduais destinadas a consumidor final, dando relevância ao Estado de destino.
+
+Macete: deslocamento físico não é sinônimo de circulação jurídica; não cumulatividade = débito menos crédito; DIFAL = diferença entre alíquota interna do destino e alíquota interestadual.</p>
+      </div>
+      <div class="quiz-section">
+        <h3>Questões da Aula 2 — ICMS</h3>
+        <p class="hint">Marque a alternativa que considerar correta e só depois toque em <strong>“Conferir resposta e explicação”</strong>.</p>
+        
+    <article class="question-card">
+      <div class="qnum">Questão 1</div>
+      <div class="qtext">Uma empresa transfere mercadoria entre dois estabelecimentos próprios, sem mudança de titularidade. Qual ideia central da aula deve ser lembrada?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q20"> <span><strong>A)</strong> Movimentação física, sozinha, não equivale necessariamente à circulação jurídica tributável.</span></label><label class="opt"><input type="radio" name="q20"> <span><strong>B)</strong> Toda saída física gera ICMS automaticamente.</span></label><label class="opt"><input type="radio" name="q20"> <span><strong>C)</strong> Somente transferências interestaduais não geram ICMS.</span></label><label class="opt"><input type="radio" name="q20"> <span><strong>D)</strong> A ausência de nota fiscal é o único critério relevante.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: A) Movimentação física, sozinha, não equivale necessariamente à circulação jurídica tributável.</strong></div>
+          <div class="why">O material trabalha a diferença entre circulação física e circulação jurídica, destacando a titularidade.</div>
+        </div>
+      </details>
+    </article>
+    
+    <article class="question-card">
+      <div class="qnum">Questão 2</div>
+      <div class="qtext">Qual fórmula de memorização melhor representa a não cumulatividade na revisão?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q21"> <span><strong>A)</strong> Imposto = crédito das entradas + débito das saídas.</span></label><label class="opt"><input type="radio" name="q21"> <span><strong>B)</strong> Imposto = débito das saídas − crédito das entradas.</span></label><label class="opt"><input type="radio" name="q21"> <span><strong>C)</strong> Imposto = valor total das vendas sem compensação.</span></label><label class="opt"><input type="radio" name="q21"> <span><strong>D)</strong> Imposto = alíquota interna − valor da mercadoria.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: B) Imposto = débito das saídas − crédito das entradas.</strong></div>
+          <div class="why">A revisão usa a lógica de compensar débitos das saídas com créditos das entradas.</div>
+        </div>
+      </details>
+    </article>
+    
+    <article class="question-card">
+      <div class="qnum">Questão 3</div>
+      <div class="qtext">No DIFAL, qual relação foi usada como macete no material?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q22"> <span><strong>A)</strong> Alíquota interestadual menos alíquota interna do destino.</span></label><label class="opt"><input type="radio" name="q22"> <span><strong>B)</strong> Alíquota interna do destino menos alíquota interestadual.</span></label><label class="opt"><input type="radio" name="q22"> <span><strong>C)</strong> Alíquota municipal menos alíquota estadual.</span></label><label class="opt"><input type="radio" name="q22"> <span><strong>D)</strong> Valor da mercadoria menos crédito acumulado.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: B) Alíquota interna do destino menos alíquota interestadual.</strong></div>
+          <div class="why">O macete apresentado é DIFAL = alíquota interna do Estado de destino − alíquota interestadual.</div>
+        </div>
+      </details>
+    </article>
+    
+      </div>
+    </section>
+    
+    <section class="class-block" id="ipva">
+      <div class="class-title">Aula 3 — IPVA</div>
+      <div class="lesson">
+        <h2>IPVA — EC 132/2023 e credor fiduciário</h2>
+        <p>O IPVA é imposto de competência dos Estados e do Distrito Federal. A aula reforça uma pegadinha: quem institui, lança e fiscaliza é o Estado/DF, embora 50% da arrecadação seja repassada ao Município indicado constitucionalmente. Não confunda competência tributária com repartição da receita.
+
+A EC 132/2023 alterou profundamente o tema ao prever incidência sobre veículos terrestres, aquáticos e aéreos. O material destaca que isso não torna automaticamente válida uma lei estadual antiga que já tentava cobrar IPVA de aeronaves ou embarcações: a aula exige lei nova após a reforma para sustentar a cobrança. Também são destacadas exceções, como determinadas aeronaves agrícolas, aeronaves utilizadas em prestação de serviços aéreos a terceiros e certas embarcações ligadas a transporte, pesca e outras atividades constitucionalmente ressalvadas.
+
+As alíquotas podem variar conforme critérios trabalhados na revisão, como tipo, valor, utilização e impacto ambiental do veículo. Portanto, não é correto presumir que todos os veículos devem sofrer exatamente a mesma alíquota.
+
+O ponto mais provável para questão dissertativa é a alienação fiduciária. O credor fiduciário, normalmente o banco, possui propriedade resolúvel para garantir a dívida. O comprador, devedor fiduciante, permanece com a posse direta e utilização do veículo. Conforme o Tema 1.158/STJ apresentado na aula, o credor fiduciário não responde pelo IPVA anterior à consolidação da propriedade em seu patrimônio.
+
+Macete: financiamento em andamento = banco tem garantia; antes da consolidação, o foco do IPVA continua no devedor fiduciante.</p>
+      </div>
+      <div class="quiz-section">
+        <h3>Questões da Aula 3 — IPVA</h3>
+        <p class="hint">Marque a alternativa que considerar correta e só depois toque em <strong>“Conferir resposta e explicação”</strong>.</p>
+        
+    <article class="question-card">
+      <div class="qnum">Questão 1</div>
+      <div class="qtext">Depois da EC 132/2023, qual afirmação corresponde ao material?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q13"> <span><strong>A)</strong> O IPVA permanece limitado constitucionalmente a veículos terrestres.</span></label><label class="opt"><input type="radio" name="q13"> <span><strong>B)</strong> O IPVA pode alcançar veículos terrestres, aquáticos e aéreos, observadas as exceções.</span></label><label class="opt"><input type="radio" name="q13"> <span><strong>C)</strong> Somente veículos aquáticos passaram a ser alcançados.</span></label><label class="opt"><input type="radio" name="q13"> <span><strong>D)</strong> A reforma extinguiu a competência estadual sobre IPVA.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: B) O IPVA pode alcançar veículos terrestres, aquáticos e aéreos, observadas as exceções.</strong></div>
+          <div class="why">A EC 132/2023 ampliou o campo constitucional para veículos terrestres, aquáticos e aéreos, com ressalvas expressas.</div>
+        </div>
+      </details>
+    </article>
+    
+    <article class="question-card">
+      <div class="qnum">Questão 2</div>
+      <div class="qtext">Lei estadual antiga, anterior à EC 132/2023, já cobrava IPVA de aeronaves. Qual foi a orientação apresentada na aula?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q14"> <span><strong>A)</strong> A lei antiga se torna automaticamente válida após a emenda.</span></label><label class="opt"><input type="radio" name="q14"> <span><strong>B)</strong> A lei antiga vale apenas para jatos particulares.</span></label><label class="opt"><input type="radio" name="q14"> <span><strong>C)</strong> A cobrança exige lei nova posterior à reforma.</span></label><label class="opt"><input type="radio" name="q14"> <span><strong>D)</strong> A cobrança pode ser feita por decreto do governador.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: C) A cobrança exige lei nova posterior à reforma.</strong></div>
+          <div class="why">O material expressamente rejeita a ideia de constitucionalidade superveniente e aponta necessidade de lei nova após a EC 132/2023.</div>
+        </div>
+      </details>
+    </article>
+    
+    <article class="question-card">
+      <div class="qnum">Questão 3</div>
+      <div class="qtext">Em um financiamento com alienação fiduciária, antes da consolidação da propriedade no banco, qual conclusão foi destacada?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q15"> <span><strong>A)</strong> O banco responde pelo IPVA por ser titular da garantia fiduciária.</span></label><label class="opt"><input type="radio" name="q15"> <span><strong>B)</strong> O credor fiduciário não responde pelo IPVA anterior à consolidação; o devedor fiduciante permanece como referência tributária.</span></label><label class="opt"><input type="radio" name="q15"> <span><strong>C)</strong> Banco e comprador respondem sempre em partes iguais.</span></label><label class="opt"><input type="radio" name="q15"> <span><strong>D)</strong> O IPVA fica suspenso até a quitação do financiamento.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: B) O credor fiduciário não responde pelo IPVA anterior à consolidação; o devedor fiduciante permanece como referência tributária.</strong></div>
+          <div class="why">O Tema 1.158/STJ, conforme a aula, afasta a responsabilidade do credor fiduciário pelo IPVA antes da consolidação.</div>
+        </div>
+      </details>
+    </article>
+    
+    <article class="question-card">
+      <div class="qnum">Questão 4</div>
+      <div class="qtext">Qual é a pegadinha correta sobre competência e repartição do IPVA?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q16"> <span><strong>A)</strong> O Município institui o IPVA porque recebe metade da arrecadação.</span></label><label class="opt"><input type="radio" name="q16"> <span><strong>B)</strong> Estado/DF institui e fiscaliza; o Município recebe parcela da arrecadação.</span></label><label class="opt"><input type="radio" name="q16"> <span><strong>C)</strong> União institui e os Estados fiscalizam.</span></label><label class="opt"><input type="radio" name="q16"> <span><strong>D)</strong> Município e Estado têm competência legislativa simultânea.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: B) Estado/DF institui e fiscaliza; o Município recebe parcela da arrecadação.</strong></div>
+          <div class="why">Receber parte da receita não significa possuir competência tributária. A competência é estadual/distrital.</div>
+        </div>
+      </details>
+    </article>
+    
+    <article class="question-card">
+      <div class="qnum">Questão 5</div>
+      <div class="qtext">Qual afirmação é incompatível com a revisão sobre as exceções pós-EC 132/2023?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q17"> <span><strong>A)</strong> Existem exceções para determinadas aeronaves agrícolas.</span></label><label class="opt"><input type="radio" name="q17"> <span><strong>B)</strong> Há ressalvas para certas aeronaves usadas em serviços aéreos a terceiros.</span></label><label class="opt"><input type="radio" name="q17"> <span><strong>C)</strong> Toda aeronave e toda embarcação passaram obrigatoriamente a pagar IPVA sem qualquer exceção.</span></label><label class="opt"><input type="radio" name="q17"> <span><strong>D)</strong> Há exceções relacionadas a determinadas embarcações de transporte e pesca.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: C) Toda aeronave e toda embarcação passaram obrigatoriamente a pagar IPVA sem qualquer exceção.</strong></div>
+          <div class="why">A reforma ampliou a incidência, mas o material também lista exceções. Portanto, &#x27;todo avião e todo barco paga&#x27; é generalização incorreta.</div>
+        </div>
+      </details>
+    </article>
+    
+      </div>
+    </section>
+    
+    <section class="class-block" id="itcmd">
+      <div class="class-title">Aula 4 — ITCMD</div>
+      <div class="lesson">
+        <h2>ITCMD — doação, valor de mercado e Tema 825/STF</h2>
+        <p>O ITCMD é imposto de competência dos Estados e do Distrito Federal e incide sobre transmissões causa mortis e doações. Na transmissão causa mortis, o ponto-chave para a prova é o momento do fato gerador: ele ocorre na data do óbito, em razão do princípio da saisine. O inventário apenas formaliza e organiza uma transmissão que juridicamente já ocorreu.
+
+Na doação, a revisão destaca a base de cálculo pelo valor de mercado do bem ou direito na data do fato gerador. Isso significa que o valor histórico, contábil ou simplesmente declarado no imposto de renda não é, por si só, o parâmetro central da aula. A LC 227/2026 também foi trabalhada como relevante por ampliar as situações tratadas como doação para fins tributários. A lógica é observar o efeito econômico da operação: se alguém recebe vantagem patrimonial gratuita, certas situações podem ser equiparadas a doação, como perdão de dívida entre vinculados, excesso gratuito de meação ou quinhão, instituição de usufruto, transferência gratuita de frutos e negócio oneroso simulado que esconda liberalidade.
+
+Outro ponto de alta prioridade é o Tema 825/STF. O STF decidiu que Estados e DF não podiam instituir ITCMD em determinadas hipóteses com elemento no exterior sem a lei complementar federal exigida pela Constituição. A revisão liga esse tema à EC 132/2023 e, depois, à LC 227/2026, apresentada como a norma que passou a disciplinar nacionalmente a matéria. Para competência, o material resume: imóvel → situação do bem; bens móveis, títulos e créditos → domicílio do de cujus ou doador.
+
+Macete: morte ou doação = ITCMD; doação = atenção ao valor de mercado; exterior = lembre Tema 825.</p>
+      </div>
+      <div class="quiz-section">
+        <h3>Questões da Aula 4 — ITCMD</h3>
+        <p class="hint">Marque a alternativa que considerar correta e só depois toque em <strong>“Conferir resposta e explicação”</strong>.</p>
+        
+    <article class="question-card">
+      <div class="qnum">Questão 1</div>
+      <div class="qtext">Na transmissão causa mortis, qual momento foi destacado no material como fato gerador do ITCMD?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q1"> <span><strong>A)</strong> A abertura formal do inventário.</span></label><label class="opt"><input type="radio" name="q1"> <span><strong>B)</strong> A homologação da partilha.</span></label><label class="opt"><input type="radio" name="q1"> <span><strong>C)</strong> A data do óbito, pela saisine.</span></label><label class="opt"><input type="radio" name="q1"> <span><strong>D)</strong> O registro do formal de partilha.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: C) A data do óbito, pela saisine.</strong></div>
+          <div class="why">O material fixa o fato gerador causa mortis na data do óbito. O inventário é procedimento posterior de formalização.</div>
+        </div>
+      </details>
+    </article>
+    
+    <article class="question-card">
+      <div class="qnum">Questão 2</div>
+      <div class="qtext">Pai doa ao filho um imóvel cujo valor declarado no IR é inferior ao valor econômico atual. Qual critério a revisão destacou para a base do ITCMD?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q2"> <span><strong>A)</strong> O valor de mercado na data do fato gerador.</span></label><label class="opt"><input type="radio" name="q2"> <span><strong>B)</strong> Sempre o valor constante da última declaração de IR.</span></label><label class="opt"><input type="radio" name="q2"> <span><strong>C)</strong> Sempre o custo histórico de aquisição.</span></label><label class="opt"><input type="radio" name="q2"> <span><strong>D)</strong> O menor valor entre avaliação fiscal e declaração.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: A) O valor de mercado na data do fato gerador.</strong></div>
+          <div class="why">A aula destacou o valor de mercado do bem ou direito na data do fato gerador, e não simplesmente o valor histórico, contábil ou declarado.</div>
+        </div>
+      </details>
+    </article>
+    
+    <article class="question-card">
+      <div class="qnum">Questão 3</div>
+      <div class="qtext">Qual situação melhor representa a lógica de equiparação a doação trabalhada na revisão?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q3"> <span><strong>A)</strong> Venda efetiva por preço de mercado, integralmente paga.</span></label><label class="opt"><input type="radio" name="q3"> <span><strong>B)</strong> Perdão gratuito de dívida entre pessoas vinculadas.</span></label><label class="opt"><input type="radio" name="q3"> <span><strong>C)</strong> Compra de veículo financiada em banco.</span></label><label class="opt"><input type="radio" name="q3"> <span><strong>D)</strong> Pagamento normal de obrigação contratual.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: B) Perdão gratuito de dívida entre pessoas vinculadas.</strong></div>
+          <div class="why">O perdão gratuito de dívida produz vantagem patrimonial sem contraprestação e foi apresentado como hipótese equiparada a doação.</div>
+        </div>
+      </details>
+    </article>
+    
+    <article class="question-card">
+      <div class="qnum">Questão 4</div>
+      <div class="qtext">No Tema 825/STF, qual era o problema constitucional central apresentado no material?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q4"> <span><strong>A)</strong> Os Municípios cobravam ITCMD sobre imóveis urbanos.</span></label><label class="opt"><input type="radio" name="q4"> <span><strong>B)</strong> Os Estados cobravam ITCMD sobre qualquer herança sem inventário.</span></label><label class="opt"><input type="radio" name="q4"> <span><strong>C)</strong> A União havia criado alíquota máxima do ITCMD por decreto.</span></label><label class="opt"><input type="radio" name="q4"> <span><strong>D)</strong> Estados e DF instituíam ITCMD em hipóteses com elemento no exterior sem a lei complementar federal exigida.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: D) Estados e DF instituíam ITCMD em hipóteses com elemento no exterior sem a lei complementar federal exigida.</strong></div>
+          <div class="why">O Tema 825 tratou da impossibilidade de Estados e DF preencherem, sozinhos, a lacuna normativa exigida pela Constituição para certas situações internacionais.</div>
+        </div>
+      </details>
+    </article>
+    
+    <article class="question-card">
+      <div class="qnum">Questão 5</div>
+      <div class="qtext">Segundo o esquema de competência internacional da aula, qual associação está correta?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q5"> <span><strong>A)</strong> Imóvel → domicílio do donatário; móvel → localização física do bem.</span></label><label class="opt"><input type="radio" name="q5"> <span><strong>B)</strong> Imóvel → situação do bem; móveis, títulos e créditos → domicílio do de cujus ou doador.</span></label><label class="opt"><input type="radio" name="q5"> <span><strong>C)</strong> Todo bem → domicílio do herdeiro ou donatário.</span></label><label class="opt"><input type="radio" name="q5"> <span><strong>D)</strong> Todo bem → local onde tramita o inventário.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: B) Imóvel → situação do bem; móveis, títulos e créditos → domicílio do de cujus ou doador.</strong></div>
+          <div class="why">A aula resumiu: imóvel segue a situação do bem; bens móveis, títulos e créditos seguem o domicílio do de cujus ou doador.</div>
+        </div>
+      </details>
+    </article>
+    
+    <article class="question-card">
+      <div class="qnum">Questão 6</div>
+      <div class="qtext">Dois herdeiros deveriam receber partes iguais, mas um recebe valor maior sem pagar qualquer compensação ao outro. Qual é a ideia tributária destacada?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q6"> <span><strong>A)</strong> Pode haver excesso gratuito de quinhão tratado como doação.</span></label><label class="opt"><input type="radio" name="q6"> <span><strong>B)</strong> Nunca existe ITCMD porque ambos já eram herdeiros.</span></label><label class="opt"><input type="radio" name="q6"> <span><strong>C)</strong> A diferença gera automaticamente ITBI.</span></label><label class="opt"><input type="radio" name="q6"> <span><strong>D)</strong> A diferença é irrelevante porque ocorreu dentro do inventário.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: A) Pode haver excesso gratuito de quinhão tratado como doação.</strong></div>
+          <div class="why">A revisão cita o excesso gratuito de meação ou quinhão como situação que pode configurar transmissão gratuita para fins de ITCMD.</div>
+        </div>
+      </details>
+    </article>
+    
+    <article class="question-card">
+      <div class="qnum">Questão 7</div>
+      <div class="qtext">Uma pessoa simplesmente renuncia à herança, sem indicar beneficiário. Qual cuidado a revisão recomenda?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q23"> <span><strong>A)</strong> Tratar toda renúncia, sem exceção, como doação tributável.</span></label><label class="opt"><input type="radio" name="q23"> <span><strong>B)</strong> Não confundir renúncia pura com renúncia em favor de pessoa determinada; esta última pode assumir caráter de transmissão gratuita.</span></label><label class="opt"><input type="radio" name="q23"> <span><strong>C)</strong> Aplicar sempre ITBI porque há patrimônio imóvel.</span></label><label class="opt"><input type="radio" name="q23"> <span><strong>D)</strong> Cobrar IPVA se o espólio tiver veículos.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: B) Não confundir renúncia pura com renúncia em favor de pessoa determinada; esta última pode assumir caráter de transmissão gratuita.</strong></div>
+          <div class="why">A revisão faz a distinção: a renúncia em favor de pessoa determinada pode caracterizar transmissão gratuita; não se deve afirmar que toda renúncia é doação.</div>
+        </div>
+      </details>
+    </article>
+    
+    <article class="question-card">
+      <div class="qnum">Questão 8</div>
+      <div class="qtext">Qual frase melhor resume a lógica das doações sucessivas apresentada na aula?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q24"> <span><strong>A)</strong> Cada doação é sempre ignorada para efeito das seguintes.</span></label><label class="opt"><input type="radio" name="q24"> <span><strong>B)</strong> Doações do mesmo doador ao mesmo donatário podem ser somadas no período legal, com dedução do imposto já pago.</span></label><label class="opt"><input type="radio" name="q24"> <span><strong>C)</strong> Doações sucessivas deixam de pagar ITCMD após a primeira.</span></label><label class="opt"><input type="radio" name="q24"> <span><strong>D)</strong> Somente doações de imóveis podem ser somadas.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: B) Doações do mesmo doador ao mesmo donatário podem ser somadas no período legal, com dedução do imposto já pago.</strong></div>
+          <div class="why">A soma busca impedir fracionamento artificial para permanecer em faixas menores, deduzindo-se o que já foi recolhido.</div>
+        </div>
+      </details>
+    </article>
+    
+      </div>
+    </section>
+    
+    <section class="class-block" id="iptu">
+      <div class="class-title">Aula 5 — IPTU</div>
+      <div class="lesson">
+        <h2>IPTU — fato gerador, sujeito passivo e progressividade</h2>
+        <p>O IPTU é imposto municipal e distrital. O fato gerador envolve propriedade, domínio útil ou posse com animus domini de imóvel urbano. Animus domini é a intenção de possuir o bem como próprio. Por isso, a aula diferencia o possuidor com aparência de dono do simples detentor. O promitente comprador que já está na posse pode ser alcançado pela cobrança, enquanto o locatário, em regra, não é contribuinte perante o Fisco apenas porque o contrato de locação lhe atribuiu o pagamento do IPTU. A cláusula contratual produz efeitos entre as partes, mas não muda automaticamente a relação tributária.
+
+A base de cálculo é o valor venal do imóvel. O ponto mais importante da revisão, porém, é a diferença entre duas progressividades. A progressividade extrafiscal está ligada à função social da propriedade urbana e funciona como instrumento de política urbana. Já a progressividade fiscal usa o valor do imóvel para graduar a alíquota segundo capacidade contributiva e somente foi autorizada pela EC 29/2000.
+
+A Súmula 668/STF é essencial: lei municipal anterior à EC 29/2000 não podia estabelecer progressividade fiscal do IPTU em razão do valor do imóvel, salvo a hipótese voltada à função social. Se essa progressividade antiga for declarada inconstitucional, a revisão lembra o Tema 226/STF: não há isenção total; aplica-se a alíquota mínima prevista na legislação pertinente.
+
+Também não confunda valor do imóvel com quantidade de imóveis. A Súmula 589/STF veda adicional progressivo simplesmente porque o contribuinte possui vários imóveis. Macete: função social = extrafiscal; valor do imóvel = fiscal; antes da EC 29/2000, progressividade fiscal é o problema.</p>
+      </div>
+      <div class="quiz-section">
+        <h3>Questões da Aula 5 — IPTU</h3>
+        <p class="hint">Marque a alternativa que considerar correta e só depois toque em <strong>“Conferir resposta e explicação”</strong>.</p>
+        
+    <article class="question-card">
+      <div class="qnum">Questão 1</div>
+      <div class="qtext">Qual alternativa distingue corretamente as duas progressividades do IPTU?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q7"> <span><strong>A)</strong> Extrafiscal = valor do imóvel; fiscal = função social.</span></label><label class="opt"><input type="radio" name="q7"> <span><strong>B)</strong> Extrafiscal = função social; fiscal = valor do imóvel/capacidade contributiva.</span></label><label class="opt"><input type="radio" name="q7"> <span><strong>C)</strong> Ambas dependem exclusivamente do número de imóveis do contribuinte.</span></label><label class="opt"><input type="radio" name="q7"> <span><strong>D)</strong> Ambas só passaram a existir depois da EC 29/2000.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: B) Extrafiscal = função social; fiscal = valor do imóvel/capacidade contributiva.</strong></div>
+          <div class="why">A progressividade extrafiscal está ligada à função social da propriedade. A fiscal, ao valor do imóvel, foi autorizada pela EC 29/2000.</div>
+        </div>
+      </details>
+    </article>
+    
+    <article class="question-card">
+      <div class="qnum">Questão 2</div>
+      <div class="qtext">Uma lei municipal de 1998 criou alíquotas maiores de IPTU conforme o valor do imóvel, sem finalidade de função social. Segundo a revisão, qual é a conclusão?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q8"> <span><strong>A)</strong> É válida porque o Município tem competência tributária plena.</span></label><label class="opt"><input type="radio" name="q8"> <span><strong>B)</strong> É válida apenas para imóveis comerciais.</span></label><label class="opt"><input type="radio" name="q8"> <span><strong>C)</strong> É inconstitucional segundo a Súmula 668/STF.</span></label><label class="opt"><input type="radio" name="q8"> <span><strong>D)</strong> É constitucional se o contribuinte tiver mais de um imóvel.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: C) É inconstitucional segundo a Súmula 668/STF.</strong></div>
+          <div class="why">Antes da EC 29/2000, a progressividade fiscal por valor do imóvel era inconstitucional, salvo a progressividade ligada à função social.</div>
+        </div>
+      </details>
+    </article>
+    
+    <article class="question-card">
+      <div class="qnum">Questão 3</div>
+      <div class="qtext">Se a progressividade fiscal anterior à EC 29/2000 for declarada inconstitucional, o que a revisão registra sobre o imposto devido?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q9"> <span><strong>A)</strong> O IPTU desaparece integralmente.</span></label><label class="opt"><input type="radio" name="q9"> <span><strong>B)</strong> Aplica-se a alíquota máxima prevista na lei.</span></label><label class="opt"><input type="radio" name="q9"> <span><strong>C)</strong> Aplica-se a alíquota mínima pertinente, conforme o Tema 226/STF.</span></label><label class="opt"><input type="radio" name="q9"> <span><strong>D)</strong> O Município deve converter a cobrança em ITBI.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: C) Aplica-se a alíquota mínima pertinente, conforme o Tema 226/STF.</strong></div>
+          <div class="why">O material destaca que a consequência não é isenção total: permanece a cobrança pela alíquota mínima aplicável.</div>
+        </div>
+      </details>
+    </article>
+    
+    <article class="question-card">
+      <div class="qnum">Questão 4</div>
+      <div class="qtext">O contrato de locação diz que o inquilino pagará o IPTU. Qual conclusão corresponde ao material?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q10"> <span><strong>A)</strong> O contrato transforma automaticamente o locatário em contribuinte perante o Município.</span></label><label class="opt"><input type="radio" name="q10"> <span><strong>B)</strong> A cláusula vale entre locador e locatário, mas não altera automaticamente o sujeito passivo tributário.</span></label><label class="opt"><input type="radio" name="q10"> <span><strong>C)</strong> O proprietário deixa definitivamente de poder ser cobrado.</span></label><label class="opt"><input type="radio" name="q10"> <span><strong>D)</strong> O IPTU passa a ser obrigação exclusivamente civil.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: B) A cláusula vale entre locador e locatário, mas não altera automaticamente o sujeito passivo tributário.</strong></div>
+          <div class="why">O contrato pode atribuir o encargo econômico ao locatário, mas isso não muda automaticamente a relação jurídico-tributária com o Fisco.</div>
+        </div>
+      </details>
+    </article>
+    
+    <article class="question-card">
+      <div class="qnum">Questão 5</div>
+      <div class="qtext">Por que é inconstitucional cobrar adicional de IPTU apenas porque a pessoa possui muitos imóveis, segundo a revisão?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q11"> <span><strong>A)</strong> Porque o IPTU é sempre proporcional à renda anual.</span></label><label class="opt"><input type="radio" name="q11"> <span><strong>B)</strong> Porque a quantidade de imóveis não pode ser usada como atributo pessoal para agravar cada imóvel, conforme a Súmula 589/STF.</span></label><label class="opt"><input type="radio" name="q11"> <span><strong>C)</strong> Porque imóveis adicionais são isentos.</span></label><label class="opt"><input type="radio" name="q11"> <span><strong>D)</strong> Porque apenas a União pode tributar patrimônio múltiplo.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: B) Porque a quantidade de imóveis não pode ser usada como atributo pessoal para agravar cada imóvel, conforme a Súmula 589/STF.</strong></div>
+          <div class="why">A Súmula 589/STF veda adicional progressivo em função do número de imóveis do contribuinte.</div>
+        </div>
+      </details>
+    </article>
+    
+    <article class="question-card">
+      <div class="qnum">Questão 6</div>
+      <div class="qtext">Qual situação melhor se encaixa em posse com animus domini para fins de IPTU?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q12"> <span><strong>A)</strong> Locatário que ocupa o imóvel durante 12 meses.</span></label><label class="opt"><input type="radio" name="q12"> <span><strong>B)</strong> Visitante que reside temporariamente com o proprietário.</span></label><label class="opt"><input type="radio" name="q12"> <span><strong>C)</strong> Promitente comprador já imitido na posse do imóvel.</span></label><label class="opt"><input type="radio" name="q12"> <span><strong>D)</strong> Prestador de serviço que utiliza uma sala por contrato.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: C) Promitente comprador já imitido na posse do imóvel.</strong></div>
+          <div class="why">O promitente comprador na posse foi apresentado como exemplo de possuidor com animus domini, ao contrário do mero detentor.</div>
+        </div>
+      </details>
+    </article>
+    
+    <article class="question-card">
+      <div class="qnum">Questão 7</div>
+      <div class="qtext">Qual conjunto identifica corretamente os elementos básicos do IPTU anotados na revisão?</div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="q25"> <span><strong>A)</strong> Competência estadual; base de cálculo = renda; fato gerador = transmissão.</span></label><label class="opt"><input type="radio" name="q25"> <span><strong>B)</strong> Competência municipal/DF; base de cálculo = valor venal; fato gerador ligado à propriedade, domínio útil ou posse de imóvel urbano.</span></label><label class="opt"><input type="radio" name="q25"> <span><strong>C)</strong> Competência federal; base de cálculo = valor de mercado do veículo.</span></label><label class="opt"><input type="radio" name="q25"> <span><strong>D)</strong> Competência municipal; fato gerador = compra e venda onerosa.</span></label>
+      </div>
+      <details class="answer">
+        <summary>Conferir resposta e explicação</summary>
+        <div class="answer-box">
+          <div><strong>Resposta: B) Competência municipal/DF; base de cálculo = valor venal; fato gerador ligado à propriedade, domínio útil ou posse de imóvel urbano.</strong></div>
+          <div class="why">Esses são os elementos básicos anotados na revisão manuscrita e desenvolvidos na aula de IPTU.</div>
+        </div>
+      </details>
+    </article>
+    
+      </div>
+    </section>
+    
+
+<footer>
+  Esta versão foi feita para funcionar mesmo em visualizadores que não executam scripts. As respostas ficam recolhidas em cada questão e só aparecem quando você abre a explicação.
+</footer>
+</div>
+</body>
+</html>
